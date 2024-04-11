@@ -1,0 +1,14 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+ 
+ #config/routes.yaml
+app_homepage:
+    path: /Acceuil
+    controller: App\Controller\AcceuilController::index
+
+app_contact:
+    path: /contacts
+    controller: App\Controller\ContactController::index
+
+

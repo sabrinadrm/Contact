@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block body %}
+
+<h1 class='text-center pt-2' >Liste des Contacts</h1>
+<div class="row">
+  {%  for lecontact in LesContacts %}
+    <div class='col-sm-12 col-md-12 col-lg-4 col-xl-3 '>
+        <div class='card mb-3'>   
+            <h4 class="card-title text-center ">{{lecontact.nom}} {{lecontact.prenom}}</h4>
+                <img style="height: auto; max-width: 200px; display: block;" src="{{lecontact.avatar}}" class="avatar mx-auto my-3" alt="image avatar">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{lecontact.rue}}</li>
+                    <li class="list-group-item">{{lecontact.cp}}</li>
+                    <li class="list-group-item">{{lecontact.ville}}</li>
+                    <li class="list-group-item">{{lecontact.mail}}</li>
+                    <li class="list-group-item">
+                    
+                    </li>
+                    
+                        <li class="list-group-item"> 
+                            <a href="">
+                                
+                            </a>
+                        </li>
+                    
+                </ul>
+                <div class="card-body">
+                    <a href="" class="btn btn-success btn-block text-center w-100">Détail ...</a>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
