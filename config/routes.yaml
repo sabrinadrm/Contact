@@ -4,11 +4,29 @@
  
  #config/routes.yaml
 app_homepage:
-    path: /Acceuil
+    path: /
     controller: App\Controller\AcceuilController::index
 
-app_contact:
+app_contacts:
     path: /contacts
     controller: App\Controller\ContactController::index
 
+app_contact:
+    path: /contact/{id?}
+    controller: App\Controller\ContactController::contact
 
+
+app_catégories:
+    path: /catégories
+    controller: App\Controller\CatégorieController::index
+
+app_catégorie:
+    path: /catégorie/{id?}
+    controller: App\Controller\CatégorieController::categorie
+
+app_contactSexe:
+    path: /contact/sexe/{sexe}
+    controller: App\Controller\ContactController::contactSexe
+   
+
+ 

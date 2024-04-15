@@ -38,6 +38,10 @@ class Contact
     #[ORM\Column]
     private ?int $sexe = null;
 
+    #[ORM\ManyToOne(inversedBy: 'contacts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Catégorie $categorie = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,6 +139,18 @@ class Contact
     public function setSexe(int $sexe): self
     {
         $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Catégorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Catégorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

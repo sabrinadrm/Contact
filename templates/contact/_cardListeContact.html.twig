@@ -1,0 +1,34 @@
+<div class='card mb-3
+    {% if lecontact.sexe == 0 %}
+        border-info border-2
+     {% else %}
+         border-warning border-2
+     {% endif %}
+    '> 
+
+            <h4 class="card-title text-center ">{{lecontact.nom}} {{lecontact.prenom}}</h4>
+                <img style="height: auto; max-width: 200px; display: block;" src="{{lecontact.avatar}}" class="avatar mx-auto my-3" alt="image avatar">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{lecontact.rue}}</li>
+                    <li class="list-group-item">{{lecontact.cp}}</li>
+                    <li class="list-group-item">{{lecontact.ville}}</li>
+                    <li class="list-group-item">{{lecontact.mail}}</li>
+                    <li class="list-group-item">
+                        {% if lecontact.sexe == 0%}
+                            <span class='badge text-bg-primary'>Homme</span>
+                        {% else %}
+                            <span class='badge text-bg-warning'>Femme</span>
+                        {% endif %}    
+                    </li>
+                    
+                        <li class="list-group-item"> 
+                            <a href="{{path('app_catégorie',{'id' :lecontact.categorie.id})}}" >{{lecontact.categorie.libelle}} 
+                                
+                            </a>
+                        </li>
+                    
+                </ul>
+                <div class="card-body">
+                    <a href="{{path('app_contact',{'id': lecontact.id})}}" class="btn btn-success btn-block text-center w-100">Détail ...</a>
+                </div>
+        </div>

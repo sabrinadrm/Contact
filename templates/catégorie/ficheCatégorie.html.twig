@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche catégorie{% endblock %}
+{#page fiche categorie#}
+{% block body %}
+<body>
+    <h1 class='text-center pt-3 pb-3 text-white'>Fiche catégorie</h1>
+
+    <div class="row">
+            <div class="card mb-3 container">
+                <h4 class="card-title text-center">{{LaCategorie.libelle}}</h4>
+                <div class="row">
+                    <div class="col-2 d-flex align-items-center">
+                        <img style="height: auto; max-width: 200px; display: block;" src="{{LaCategorie.image}}" class="avatar mx-auto my-3" alt="image avatar">
+                    </div>
+                    <div class="col">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{LaCategorie.description}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                <a href="{{path('app_catégories')}}" class="btn btn-primary text-center w-25">Revenir à la liste</a>
+                <hr>
+            <div class='row'>
+                {%  for lecontact in LaCategorie.contacts %}
+                <div class='col-sm-12 col-md-12 col-lg-4 col-xl-3 '>
+                    <div class='card mb-3 container'>   
+                        <h4 class="card-title text-center ">{{lecontact.nom}} {{lecontact.prenom}}</h4>
+                            <img style="height: auto; max-width: 200px; display: block;" src="{{lecontact.avatar}}" class="avatar mx-auto my-3" alt="image avatar">
+                            <div class='col'>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">{{lecontact.rue}}</li>
+                                    <li class="list-group-item">{{lecontact.cp}}</li>
+                                    <li class="list-group-item">{{lecontact.ville}}</li>
+                                    <li class="list-group-item">{{lecontact.mail}}</li>
+                                    <li class="list-group-item">
+                                        {% if lecontact.sexe == 0%}
+                                            <span>Homme</span>
+                                        {% else %}
+                                            <span>Femme</span>
+                                        {% endif %}    
+                                    </li>
+                                    
+                                        <li class="list-group-item"> 
+                                            <a href="{{path('app_catégorie',{'id' :lecontact.categorie.id})}}" >
+                                                {{lecontact.categorie.libelle}} 
+                                            </a>
+                                        </li>
+                                </ul>
+                            </div>   
+                    </div>
+                    <a href="{{path('app_contacts')}}" class="btn btn-success btn-block text-center w-100">Revenir à la liste</a>
+                </div>
+                {% endfor %}
+            </div>
+    </div>       
+</body>      
+{% endblock %}
